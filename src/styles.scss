@@ -1,1 +1,104 @@
 /* You can add global styles to this file, and also import other style files */
+// variables
+$accent : #ff4081;
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+// sizes
+.full-width,
+app-all,
+app-pending,
+app-completed {
+    width: 100%;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.half-width {
+    width: 50%;
+}
+.padding-20px{
+    padding: 20px;
+}
+
+// gap
+.gap-1em {
+    gap: 1em;
+}
+
+.gap-05em {
+    gap: 0.5em;
+}
+
+// flex
+.flex {
+    display: flex;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.start-center {
+    align-items: center;
+}
+
+.spacebetween-center {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.center-center {
+    justify-content: center;
+    align-items: center;
+}
+
+// inputs
+
+.outline-input {
+    .mat-mdc-text-field-wrapper {
+        height: 40px;
+        align-items: center;
+    }
+
+    .mat-mdc-form-field-subscript-wrapper {
+        display: none;
+    }
+
+}
+
+// links
+.link:hover,
+.activeLink {
+    color: $accent;
+    cursor: pointer;
+    text-decoration: underline;
+}
+//  fonts
+.text-center{
+    text-align: center;
+}
+
+.cursor{
+    cursor: pointer;
+}

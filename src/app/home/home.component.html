@@ -1,0 +1,27 @@
+<div class="flex column full-height padding-20px">
+    <!-- A toolbar containing the search icon and input field -->
+    <mat-toolbar class="flex spacebetween-center">
+        <h3 class="width-240px">My TODO App</h3>
+        <div class="outline-input max-width-400px full-width"> <mat-form-field appearance="outline" class="full-width ">
+                <mat-icon matPrefix>search</mat-icon>
+                <input matInput placeholder="search to do">
+            </mat-form-field></div>
+        <div class="flex gap-1em width-240px">
+            <!--------------populating from typescrip---------------->
+            <!-- *ngFor is a loop that loop through an array of objects called navItem which has been declared in typescript
+            ,[click.activeLink] applies a class called activeLink when the asigned condition is true
+            ,(click) is an eventlistener ,so when when you click on an item it should asign the number declared in typescript called selectedItem to i which is the current index clicked on.
+            ,[routerLink] is a path or url that for now starts after my hidden IP address called localhost
+            {{item.label}} since item is an object to get the label we're using a dot notation to display the label. -->
+            <p *ngFor="let item of navItem; let i = index" class="link" [class.activeLink]="selectedItem === i"
+                (click)="selectedItem = i" [routerLink]="item.route">{{item.label | titlecase}}</p>
+        </div>
+    </mat-toolbar>
+    <div class="flex flex-1 column">
+        <!--=================it activates the routes==================== -->
+        <router-outlet></router-outlet>
+    </div>
+</div>
+<button mat-fab color="accent" class="add-to-do" matTooltip="Add a new to-do" (click)="addToDo()">
+    <mat-icon>add</mat-icon>
+</button>

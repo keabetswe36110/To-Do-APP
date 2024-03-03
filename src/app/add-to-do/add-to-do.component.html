@@ -1,0 +1,41 @@
+<form #todoForm="ngForm" (submit)="submit(todoForm)">
+    <h2 class="text-center"><b>{{isUpdate ? 'update' : 'ADD'}} To DO</b></h2>
+    <!-- ========================title input========================= -->
+    <mat-form-field class="full-width">
+        <mat-label>Title</mat-label>
+        <input type="text" matInput placeholder="enter a Title" required #title="ngModel" [(ngModel)]="todoData.title"
+            name="title">
+
+        <mat-error *ngIf="title.errors?.['required']">
+            title field is required
+        </mat-error>
+    </mat-form-field>
+    <!-- ========================Due date input=============================-->
+    <mat-form-field class="full-width">
+        <input matInput [matDatepicker]="picker" readonly placeholder="Choose a date" (click)="picker.open()"
+            [(ngModel)]="todoData.dueDate" #dueDate="ngModel" required name="dueDate">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="dueDate.errors?.['required']">
+            due date is required
+        </mat-error>
+    </mat-form-field>
+
+    <!-- ===============================select===========================-->
+    <mat-form-field class="full-width">
+        <mat-label>Status</mat-label>
+        <mat-select [(ngModel)]="todoData.status" required disabled #status="ngModel" name="status">
+            <mat-option *ngFor="let Status of statuses" [value]="Status" >
+                {{Status | titlecase}}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="status.errors?.['required']">
+            select field is required
+        </mat-error>
+    </mat-form-field>
+    <div class="flex column gap-1em">
+        <button mat-raised-button color="primary" class="full-width">{{isUpdate ? 'update' : 'submit'}}</button>
+        <button mat-raised-button color="warn" class="full-width" (click)="close()">Cancel</button>
+    </div>
+
+</form>
